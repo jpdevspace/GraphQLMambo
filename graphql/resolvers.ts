@@ -13,12 +13,20 @@ export default {
 
   // ts-
   createUser: async function ({ userInput }: any, req: any) {
-    console.log('userInput >>> ', userInput, "Req >>> ", req);
+
     const existingUser = await User.findOne({ email: userInput.email });
 
     if (existingUser) {
       const error = new Error('User exists already!');
       throw error;
     }
+
+    const { email, name } = userInput;
+
+    const user = new User({ email, name });
+
+    const createdUser = await user.save();
+    console.log('createdUser >>> ', createdUser);
+    return { ...createdUser, _id: createdUser._id.toString() };
   }
 };

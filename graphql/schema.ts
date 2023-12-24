@@ -29,7 +29,6 @@ export default buildSchema(`
     _id: ID!
     name: String!
     email: String!
-    password: String
     status: String!
     posts: [Post!]!
   }
@@ -37,7 +36,6 @@ export default buildSchema(`
   input UserInputData {
     email: String!
     name: String!
-    password: String!
   }
 
   type RootMutation {
