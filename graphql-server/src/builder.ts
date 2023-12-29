@@ -24,3 +24,5 @@ const config = {
 export const builder = new SchemaBuilder<ScalarDate>(config);
 
 builder.addScalarType('Date', DateResolver);
+
+builder.queryType({});
